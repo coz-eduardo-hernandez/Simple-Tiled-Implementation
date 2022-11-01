@@ -10,7 +10,7 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 4,
-  nextobjectid = 2,
+  nextobjectid = 3,
   properties = {},
   tilesets = {
     {
@@ -51,7 +51,7 @@ return {
           height = 32
         },
         {
-          id = 3,
+          id = 4,
           image = "images/iso.png",
           width = 184,
           height = 184
@@ -131,16 +131,16 @@ return {
       properties = {},
       objects = {
         {
-          id = 1,
+          id = 2,
           name = "",
           class = "",
           shape = "rectangle",
           x = 384,
-          y = 288,
+          y = 320,
           width = 184,
           height = 184,
           rotation = 0,
-          gid = 4,
+          gid = 5,
           visible = true,
           properties = {}
         }

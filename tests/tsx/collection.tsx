@@ -7,7 +7,7 @@
  <tile id="2">
   <image width="96" height="32" source="../images/hex1.png"/>
  </tile>
- <tile id="3">
-  <image width="184" height="184" source="../images/iso.png"/>
+ <tile id="4">
+  <image width="184" height="184" source="../../../Simple-Tiled-Implementation/tests/images/iso.png"/>
  </tile>
 </tileset>
