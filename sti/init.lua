@@ -221,7 +221,7 @@ function Map:setTiles(index, tileset, gid)
 					properties  = tile.properties
 					animation   = tile.animation
 					objectGroup = tile.objectGroup
-					class        = tile.class
+					class       = tile.class
 
 					if tile.terrain then
 						terrain = {}
@@ -238,7 +238,7 @@ function Map:setTiles(index, tileset, gid)
 				id          = id,
 				gid         = gid,
 				tileset     = index,
-				class        = class,
+				class       = class,
 				quad        = quad(
 					quadX,  quadY,
 					tileW,  tileH,
