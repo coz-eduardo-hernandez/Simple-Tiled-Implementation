@@ -204,6 +204,7 @@ function Map:setTiles(index, tileset, gid)
 							terrain[i] = tileset.terrains[tile.terrain[i] + 1]
 						end
 					end
+					break
 				end
 			end
 
