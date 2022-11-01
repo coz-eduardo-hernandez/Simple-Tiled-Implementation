@@ -49,15 +49,15 @@ function utils.cache_image(sti, path, image)
 	sti.cache[path] = image
 end
 
--- We just don't know.
-function utils.get_tiles(imageW, tileW, margin, spacing)
-	imageW  = imageW - margin
+-- Get the number of tile rows or columns that fit in an image
+function utils.get_tiles(imageSize, tileSize, margin, spacing)
+	imageSize  = imageSize - margin
 	local n = 0
 
-	while imageW >= tileW do
-		imageW = imageW - tileW
-		if n ~= 0 then imageW = imageW - spacing end
-		if imageW >= 0 then n  = n + 1 end
+	while imageSize >= tileSize do
+		imageSize = imageSize - tileSize
+		if n ~= 0 then imageSize = imageSize - spacing end
+		if imageSize >= 0 then n  = n + 1 end
 	end
 
 	return n
