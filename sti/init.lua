@@ -95,7 +95,6 @@ function Map:init(path, plugins, ox, oy)
 	setmetatable(self.freeBatchSprites, { __mode = 'k' })
 
 	-- Set tiles, images
-	local gid = 1
 	for i, tileset in ipairs(self.tilesets) do
 		assert(not tileset.filename, "STI does not support external Tilesets.\nYou need to embed all Tilesets.")
 
@@ -112,7 +111,7 @@ function Map:init(path, plugins, ox, oy)
                 end
             end
 
-            gid = self:setTiles(i, tileset, gid)
+            self:setTiles(i, tileset)
         else
             -- Build atlas for image collection
             local files, ids = {}, {}
@@ -135,7 +134,7 @@ function Map:init(path, plugins, ox, oy)
                 end
             end
 
-            gid = self:setAtlasTiles(i, tileset, map.coords, gid)
+            self:setAtlasTiles(i, tileset, map.coords)
         end
 	end
 
@@ -195,9 +194,8 @@ end
 --- Create Tiles based on a single tileset image
 -- @param index Index of the Tileset
 -- @param tileset Tileset data
--- @param gid First Global ID in Tileset
 -- @return number Next Tileset's first Global ID
-function Map:setTiles(index, tileset, gid)
+function Map:setTiles(index, tileset)
 	local quad    = lg.newQuad
 	local imageW  = tileset.imagewidth
 	local imageH  = tileset.imageheight
@@ -208,9 +206,9 @@ function Map:setTiles(index, tileset, gid)
 	local w       = utils.get_tiles(imageW, tileW, margin, spacing)
 	local h       = utils.get_tiles(imageH, tileH, margin, spacing)
 
+    local count = 0
 	for y = 1, h do
 		for x = 1, w do
-			local id    = gid - tileset.firstgid
 			local quadX = (x - 1) * tileW + margin + (x - 1) * spacing
 			local quadY = (y - 1) * tileH + margin + (y - 1) * spacing
 			local class = ""
@@ -235,8 +233,8 @@ function Map:setTiles(index, tileset, gid)
 			end
 
 			local tile = {
-				id          = id,
-				gid         = gid,
+				id          = count,
+				gid         = tileset.firstgid + count,
 				tileset     = index,
 				class       = class,
 				quad        = quad(
@@ -258,21 +256,18 @@ function Map:setTiles(index, tileset, gid)
 				offset      = tileset.tileoffset,
 			}
 
-			self.tiles[gid] = tile
-			gid             = gid + 1
+			self.tiles[tile.gid] = tile
+			count = count + 1
 		end
 	end
-
-	return gid
 end
 
 --- Create Tiles based on a texture atlas
 -- @param index Index of the Tileset
 -- @param tileset Tileset data
 -- @param coords Tile XY location in the atlas
--- @param gid First Global ID in Tileset
 -- @return number Next Tileset's first Global ID
-function Map:setAtlasTiles(index, tileset, coords, gid)
+function Map:setAtlasTiles(index, tileset, coords)
     local quad      = lg.newQuad
     local imageW    = tileset.image:getWidth()
     local imageH    = tileset.image:getHeight()
@@ -315,8 +310,6 @@ function Map:setAtlasTiles(index, tileset, coords, gid)
         -- Be aware that in collections self.tiles can be a sparse array
         self.tiles[tile.gid] = tile
     end
-
-    return gid + #tileset.tiles
 end
 
 --- Create Layers
