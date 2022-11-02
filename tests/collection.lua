@@ -10,12 +10,57 @@ return {
   tilewidth = 32,
   tileheight = 32,
   nextlayerid = 4,
-  nextobjectid = 3,
+  nextobjectid = 4,
   properties = {},
   tilesets = {
     {
       name = "collection",
       firstgid = 1,
+      class = "",
+      tilewidth = 320,
+      tileheight = 320,
+      spacing = 0,
+      margin = 0,
+      columns = 0,
+      objectalignment = "unspecified",
+      tilerendersize = "tile",
+      fillmode = "stretch",
+      tileoffset = {
+        x = 0,
+        y = 0
+      },
+      grid = {
+        orientation = "orthogonal",
+        width = 1,
+        height = 1
+      },
+      properties = {},
+      wangsets = {},
+      tilecount = 3,
+      tiles = {
+        {
+          id = 1,
+          image = "images/hale_may_320.png",
+          width = 320,
+          height = 320
+        },
+        {
+          id = 2,
+          image = "images/hex1.png",
+          width = 96,
+          height = 32
+        },
+        {
+          id = 4,
+          image = "images/iso.png",
+          width = 184,
+          height = 184
+        }
+      }
+    },
+    {
+      name = "collection",
+      firstgid = 6,
       class = "",
       tilewidth = 320,
       tileheight = 320,
@@ -141,6 +186,20 @@ return {
           height = 184,
           rotation = 0,
           gid = 5,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 3,
+          name = "",
+          class = "",
+          shape = "rectangle",
+          x = 384,
+          y = 96,
+          width = 96,
+          height = 32,
+          rotation = 0,
+          gid = 8,
           visible = true,
           properties = {}
         }

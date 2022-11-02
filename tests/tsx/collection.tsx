@@ -8,6 +8,6 @@
   <image width="96" height="32" source="../images/hex1.png"/>
  </tile>
  <tile id="4">
-  <image width="184" height="184" source="../../../Simple-Tiled-Implementation/tests/images/iso.png"/>
+  <image width="184" height="184" source="../images/iso.png"/>
  </tile>
 </tileset>
