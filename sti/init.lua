@@ -1666,8 +1666,10 @@ end
 -- @see Tile
 
 --- @table Object
--- @field id Global ID
+-- @field id Object ID
 -- @field name Name of object (non-unique)
+-- @field gid Global Tile ID
+-- @field iid Tile Instance ID
 -- @field shape Shape of object
 -- @field x Position of object on X axis (in pixels)
 -- @field y Position of object on Y axis (in pixels)
