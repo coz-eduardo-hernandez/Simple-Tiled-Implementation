@@ -394,11 +394,12 @@ function Map:setTileData(layer)
 	layer.data = map
 end
 
---- Add Objects to Layer
+--- Assign Objects to Layer
 -- @param layer The Object Layer
 function Map:setObjectData(layer)
 	for _, object in ipairs(layer.objects) do
 		object.layer            = layer
+    -- object.id is the global object's ID; object.gid is the global tile id
 		self.objects[object.id] = object
 	end
 end
