@@ -106,7 +106,7 @@ function Map:init(path, plugins, ox, oy)
             end
 
             self:setTiles(i, tileset)
-        else
+        elseif tileset.tilecount > 0 then
             -- Build atlas for image collection
             local files, ids = {}, {}
             for j = 1, #tileset.tiles do
