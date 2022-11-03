@@ -736,6 +736,8 @@ function Map:setObjectSpriteBatches(layer)
 				oy    = oy
 			}
 
+            object.iid = instance.id
+
 			self.tileInstances[tile.gid] = self.tileInstances[tile.gid] or {}
 			table.insert(self.tileInstances[tile.gid], instance)
 		end
